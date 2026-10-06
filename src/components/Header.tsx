@@ -4,7 +4,7 @@ interface HeaderProps {
 export default function Header({ isLandingPage } : HeaderProps) {
     return (
         
-            <div className="navbar bg-base-100 rounded-2xl border border-[#e5e5e5]">
+            <div className="navbar bg-base-100 rounded-2xl border border-[#e5e5e5] fixed top-4 z-50  max-w-6xl px-4 py-2 backdrop-blur-sm ">
                 <div className="navbar-start">
                     <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

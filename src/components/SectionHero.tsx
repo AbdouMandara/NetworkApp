@@ -4,8 +4,7 @@
 // import Text3DFlip from "@/registry/magicui/text-3d-flip"
 import { ArrowRight, Download } from "lucide-react"
 
-import networkIllustration from "@/assets/undraw_ask-online_8zdn.svg"
-import { DotPattern } from "@/registry/magicui/dot-pattern"
+import networkIllustration from "@/assets/thinking_face_animated.png"
 
 // const ROTATING_WORDS = [
 //     "en jouant",
@@ -60,41 +59,25 @@ import { DotPattern } from "@/registry/magicui/dot-pattern"
 
 export default function SectionHero() {
     return (
-        <section className="relative w-full overflow-hidden">
-            <div className="mx-auto grid w-full max-w-6xl items-center gap-8 px-2 py-8 lg:grid-cols-2 lg:gap-12">
-                    <DotPattern
-                        glow
-                        className="[mask-image:radial-gradient(1280px_circle_at_center,white,transparent)]"
-                    />
+        <section className="relative w-full overflow-hidden mt-12">
+            <div className="mx-auto w-full flex flex-col justify-center max-w-6xl items-center py-16 lg:gap-8">
+                <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+                    <h1 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl">
+                        Tu découvres le réseau et t'es perdu ?
+                    </h1>
+                </div>
+
                 <div className="relative isolate">
                     <img
                         src={networkIllustration}
                         alt="Illustration d'un échange de données entre deux machines"
-                        className="relative h-[240px] w-full sm:h-[300px]"
+                        className="relative  sm:h-[300px]"
                     />
                 </div>
 
-                <div className="flex flex-col items-center gap-5 text-center lg:items-start lg:text-left">
-
-                    <h1 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl">
-                        Tu découvres le réseau ?
-                    </h1>
-
-                    {/* <RotatingWords /> */}
-
-
-                    <div className="mt-1 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-                        <a href="/telechargement" className="btn btn-primary hover:cursor btn-lg shadow-lg ">
-                            <Download className="size-5" aria-hidden="true" />
-                            Télécharger l'application
-                        </a>
-                        <a href="/inscription" className="btn btn-outline btn-lg hover:cursor">
-                            Commencer
-                            <ArrowRight className="size-5" aria-hidden="true" />
-                        </a>
-                    </div>
-                </div>
             </div>
         </section>
+
+
     )
 }
