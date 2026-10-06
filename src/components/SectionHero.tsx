@@ -1,5 +1,5 @@
 "use client"
-import { ChevronDown } from "lucide-react"
+import { ArrowRight, ChevronDown, Download } from "lucide-react"
 import networkIllustration from "@/assets/thinking_face_animated.png"
 
 export default function SectionHero() {
@@ -33,11 +33,12 @@ export default function SectionHero() {
                             Sur NetworkApp, t’es au bon endroit.
                         </h2>
                         <p className="mt-5 max-w-2xl text-base leading-7 text-white/80">
-                            Découvre le fonctionnement des réseaux et comprends comment les données circulent entre tes appareils.
+                            Découvre des concepts utiles en réseaux et comprends les tout en amusant et en pratiquant.
                         </p>
                         <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
                             <a href="#commencer" className="btn border-white bg-white text-primary hover:bg-white/90">
-                                Commencer
+                                Commencer maintenant
+                                <ArrowRight aria-hidden="true" className="size-4" />
                             </a>
                             <button
                                 type="button"
@@ -46,6 +47,7 @@ export default function SectionHero() {
                                 className="btn btn-outline border-white text-white opacity-60"
                             >
                                 Télécharger l’app
+                                <Download aria-hidden="true" className="size-4" />
                             </button>
                         </div>
                     </div>
