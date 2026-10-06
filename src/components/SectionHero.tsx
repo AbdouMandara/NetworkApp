@@ -1,61 +1,37 @@
 "use client"
-import { ArrowRight, ChevronDown, Download } from "lucide-react"
-import networkIllustration from "@/assets/thinking_face_animated.png"
+import { ArrowRight, Download } from "lucide-react"
 import {Link} from 'react-router'
 
 export default function SectionHero() {
     return (
         <>
-            <section className="sticky top-[5.5rem] z-0 mt-18 mb-30 w-full overflow-hidden">
-                <div className="mx-auto w-full flex flex-col justify-center max-w-6xl items-center pt-16">
-                    <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-                        <h1 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl">
-                            Tu découvres le réseau et t'es perdu ?
-                        </h1>
-                    </div>
-
-                    <div className="relative isolate">
-                        <img
-                            src={networkIllustration}
-                            alt="Illustration d'un échange de données entre deux machines"
-                            className="relative h-[200px] "
-                        />
-                    </div>
-                    <div className="flex flex-col items-center gap-4 mt-20 text-gray-600">
-                        <p>Scroll pour voir plus</p>
-                        <ChevronDown className="size-6 animate-bounce" />
-                    </div>
-                </div>
-            </section>
-            <section id="commencer" className="relative z-10 min-h-[140vh] w-full bg-primary text-white">
-                <div className="sticky top-0 flex min-h-screen w-full items-center justify-center px-6 py-10 text-center">
-                    <div className="mx-auto flex w-full max-w-4xl flex-col items-center">
-                        <h2 className="text-4xl font-bold tracking-tight text-balance sm:text-5xl">
-                            Sur NetworkApp, t’es au bon endroit.
-                        </h2>
-                        <p className="mt-5 max-w-2xl text-base leading-7 text-white/80">
-                            Découvre des concepts utiles en réseaux et comprends les tout en amusant et en pratiquant.
-                        </p>
-                        <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
-                            <Link to="/login" className="btn border-white bg-white text-primary hover:bg-white/90">
-                                Commencer maintenant
-                                <ArrowRight aria-hidden="true" className="size-4" />
-                            </Link>
-                            <button
-                                type="button"
-                                disabled
-                                title="Le lien de téléchargement sera ajouté prochainement"
-                                className="btn btn-outline border-white text-white opacity-60"
-                            >
-                                Télécharger l’app
-                                <Download aria-hidden="true" className="size-4" />
-                            </button>
-                        </div>
+            <section id="commencer" className="flex min-h-0 w-full flex-1 items-center justify-center px-6 pt-20 pb-8 text-center text-base-content">
+                <div className="mx-auto flex w-full max-w-4xl flex-col items-center">
+                    <h1 className="text-3xl font-bold tracking-tight text-balance sm:text-5xl">
+                        Sur NetworkApp, t’es au bon endroit.
+                    </h1>
+                    <p className="mt-3 max-w-2xl text-base leading-7 text-base-content/70 sm:mt-5">
+                        Découvre des concepts utiles en réseaux et comprends les tout en amusant et en pratiquant.
+                    </p>
+                    <div className="mt-5 flex flex-col items-center gap-3 sm:mt-8 sm:flex-row">
+                        <Link to="/login" className="btn btn-primary">
+                            Commencer maintenant
+                            <ArrowRight aria-hidden="true" className="size-4" />
+                        </Link>
+                        <button
+                            type="button"
+                            disabled
+                            title="Le lien de téléchargement sera ajouté prochainement"
+                            className="btn btn-outline border-base-content/30 text-base-content opacity-60"
+                        >
+                            Télécharger l’app
+                            <Download aria-hidden="true" className="size-4" />
+                        </button>
                     </div>
                 </div>
             </section>
-            <footer className="relative z-10 w-full bg-neutral px-6 text-neutral-content">
-                <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 py-7 sm:flex-row">
+            <footer className="mt-auto w-full bg-neutral px-6 text-neutral-content">
+                <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 py-3 sm:flex-row sm:gap-5 sm:py-4">
                     <p className="text-sm">Fait par <strong>Abdou Mandara</strong></p>
                     <nav aria-label="Réseaux sociaux" className="flex items-center gap-2">
                         <a href="https://github.com/AbdouMandara" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub" className="rounded p-2 transition-colors hover:bg-white/10">
