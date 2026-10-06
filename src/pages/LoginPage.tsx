@@ -12,13 +12,12 @@ export default function LoginPage(){
                     
 
                     <section className="flex h-screen w-full max-w-xs flex-col items-center justify-center gap-4 py-4">
+                        <p className="font-bold tracking-tight  text-balance sm:text-2xl">
+                            Viens apprendre !
+                        </p>
                         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
                             <label className="label">Pseudo</label>
                             <input type="text" className="input" placeholder="Entrez votre pseudo" />
-
-                            <label className="label">Mot de passe</label>
-                            <input type="password" className="input" placeholder="Entrez votre mot de passe" />
-
                             <button className="btn btn-neutral mt-4">Démarrer</button>
                         </fieldset>
                             <div className="divider">OU</div>
