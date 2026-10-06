@@ -1,6 +1,7 @@
 "use client"
 import { ArrowRight, ChevronDown, Download } from "lucide-react"
 import networkIllustration from "@/assets/thinking_face_animated.png"
+import {Link} from 'react-router'
 
 export default function SectionHero() {
     return (
@@ -36,10 +37,10 @@ export default function SectionHero() {
                             Découvre des concepts utiles en réseaux et comprends les tout en amusant et en pratiquant.
                         </p>
                         <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
-                            <a href="#commencer" className="btn border-white bg-white text-primary hover:bg-white/90">
+                            <Link to="/login" className="btn border-white bg-white text-primary hover:bg-white/90">
                                 Commencer maintenant
                                 <ArrowRight aria-hidden="true" className="size-4" />
-                            </a>
+                            </Link>
                             <button
                                 type="button"
                                 disabled
