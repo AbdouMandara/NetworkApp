@@ -2,7 +2,9 @@
 
 // import { useEffect, useRef, useState } from "react"
 // import Text3DFlip from "@/registry/magicui/text-3d-flip"
-import { ArrowRight, Download } from "lucide-react"
+import { ArrowRight, Download,ChevronDown } from "lucide-react"
+import {  } from "lucide-react";
+
 
 import networkIllustration from "@/assets/thinking_face_animated.png"
 
@@ -59,7 +61,7 @@ import networkIllustration from "@/assets/thinking_face_animated.png"
 
 export default function SectionHero() {
     return (
-        <section className="relative w-full overflow-hidden mt-12">
+        <section className="relative w-full overflow-hidden mt-18">
             <div className="mx-auto w-full flex flex-col justify-center max-w-6xl items-center py-16 lg:gap-8">
                 <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
                     <h1 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl">
@@ -71,10 +73,13 @@ export default function SectionHero() {
                     <img
                         src={networkIllustration}
                         alt="Illustration d'un échange de données entre deux machines"
-                        className="relative  sm:h-[300px]"
+                        className="relative h-[200px] "
                     />
                 </div>
-
+                <div className="flex flex-col items-center gap-4 mt-20 text-gray-600">
+                    <p>Scroll pour voir plus</p>
+                    <ChevronDown className="size-6 animate-bounce" />
+                </div>
             </div>
         </section>
 
