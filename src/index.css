@@ -2,3 +2,6 @@
 @plugin "daisyui" {
    themes: corporate --default, dark --prefersdark;
 }
+body {
+   font-family: 'Merriweather', serif;
+}
