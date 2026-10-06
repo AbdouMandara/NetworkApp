@@ -5,8 +5,8 @@ import networkIllustration from "@/assets/thinking_face_animated.png"
 export default function SectionHero() {
     return (
         <>
-            <section className="sticky top-[5.5rem] z-0 mt-18 w-full overflow-hidden">
-                <div className="mx-auto w-full flex flex-col justify-center max-w-6xl items-center py-16">
+            <section className="sticky top-[5.5rem] z-0 mt-18 mb-30 w-full overflow-hidden">
+                <div className="mx-auto w-full flex flex-col justify-center max-w-6xl items-center pt-16">
                     <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
                         <h1 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl">
                             Tu découvres le réseau et t'es perdu ?
@@ -27,7 +27,7 @@ export default function SectionHero() {
                 </div>
             </section>
             <section className="relative z-10 min-h-[140vh] w-full bg-primary text-white">
-                <div className="sticky top-0 flex min-h-screen w-full items-center px-6 py-20 text-white">
+                <div className="sticky top-0 flex min-h-screen w-full items-center px-6 py-10 text-white">
                     <div className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
                         <div>
                             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.14em] text-white/70">
