@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer"
 import Header from "@/components/Header"
 import { DotPattern } from "@/registry/magicui/dot-pattern"
 import {Link} from 'react-router'
@@ -5,14 +6,14 @@ import {Link} from 'react-router'
 export default function LoginPage() {
     return (
         <>
-            <div className="flex min-h-screen flex-col items-center py-4 px-6">
+            <div className="flex min-h-dvh flex-col items-center">
                 <DotPattern
                     glow
                     className="[mask-image:radial-gradient(1280px_circle_at_center,white,transparent)]"
                 />
                 <Header />
 
-                <section className="flex h-screen w-full max-w-xs flex-col items-center justify-center gap-4 py-4">
+                <section className="flex w-full max-w-xs flex-1 flex-col items-center justify-center gap-4 py-4">
                     <p className="font-bold tracking-tight text-balance sm:text-2xl">
                         Viens apprendre !
                     </p>
@@ -57,6 +58,7 @@ export default function LoginPage() {
                         Retour à l'accueil
                     </Link>
                 </section>
+                <Footer />
             </div>
         </>
     )
