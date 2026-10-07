@@ -13,14 +13,19 @@ export default function LoginPage() {
                 />
                 <Header />
 
-                <section className="flex w-full max-w-xs flex-1 flex-col items-center justify-center gap-4 py-4">
+                <section className="flex w-full max-w-xs flex-1 flex-col items-center justify-center gap-4 py-4 mt-18">
                     <p className="font-bold tracking-tight text-balance sm:text-2xl">
-                        Viens apprendre !
+                        Continue d'apprendre !
                     </p>
                     <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
                         <label className="label">Pseudo</label>
                         <input type="text" className="input" placeholder="Entrez votre pseudo" />
-                        <button className="btn btn-neutral mt-4">Démarrer</button>
+                        <label className="label">Mot de passe</label>
+                        <input type="password" className="input" placeholder="Entrez votre mot de passe" />
+                        <button className="btn btn-neutral mt-4">Se connecter</button>
+                        <p className="text-muted-foreground text-center mt-2">
+                            Tu es nouveau ? <Link to="/register" className="link link-primary underline">Inscris-toi</Link>
+                        </p>
                     </fieldset>
                     <div className="divider">OU</div>
                     {/* Google */}
