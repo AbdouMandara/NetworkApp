@@ -2,7 +2,17 @@ import Footer from "@/components/Footer"
 import Header from "@/components/Header"
 import { DotPattern } from "@/registry/magicui/dot-pattern"
 import SectionAuth from "@/components/SectionAuth"
+import { useEffect } from "react";
+import useRedirectDashboard from "@/hooks/redirectDashboard";
 export default function RegisterPage(){ 
+    const redirect = useRedirectDashboard();
+    
+    useEffect(() => {
+        if (redirect) {
+            redirect();
+        }
+    }, [redirect]);
+    
     return (
         <>
             <div className="flex min-h-dvh flex-col items-center">

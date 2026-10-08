@@ -1,4 +1,3 @@
-// import { getUserDetails } from "@/auth";
 import { useEffect, useState } from "react";
 import {type UserGoogle } from "@/types/userGoogle";
 export default function Dashboard() {
@@ -6,9 +5,9 @@ export default function Dashboard() {
         
         const fetchUserDetails = async () => {
             // setLoading(true);
-            try {
-          const storedUser = localStorage.getItem('user');
-          const user: UserGoogle | null = storedUser ? JSON.parse(storedUser) : null; // Retrieve user from localStorage
+          try {
+            const storedUser = localStorage.getItem('user');
+            const user: UserGoogle | null = storedUser ? JSON.parse(storedUser) : null; // Retrieve user from localStorage
           
           if (user && user.uid){
             setUser({
@@ -23,7 +22,6 @@ export default function Dashboard() {
         } catch (error) {  
           console.error('Erreur lors de la récupération des détails de l\'utilisateur:', error);
         } finally {
-            //   setLoading(false);
             console.log('terminer');
         }
       };
