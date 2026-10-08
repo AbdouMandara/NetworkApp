@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import {type UserGoogle } from "@/types/userGoogle";
 import { DotPattern } from "@/registry/magicui/dot-pattern";
 import Header from "@/components/Header";
+import {useNavigate} from "react-router";
 export default function Dashboard() {
         const [user, setUser] = useState<UserGoogle>();
+        const navigate = useNavigate();
         const fetchUserDetails = async () => {
           try {
             const storedUser = localStorage.getItem('user');
@@ -17,6 +19,8 @@ export default function Dashboard() {
               photoURL: userLocalStorage?.photoURL || null,
               createdAt: userLocalStorage?.createdAt || new Date(),
             });
+          }else{
+            navigate('/login');
           }
         } catch (error) {  
           console.error('Erreur lors de la récupération des détails de l\'utilisateur:', error);
