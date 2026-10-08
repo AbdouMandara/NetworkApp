@@ -1,8 +1,11 @@
 import { Moon, Sun } from "lucide-react";
+import { type UserGoogle } from "@/types/userGoogle";
+
 interface HeaderProps {
     afficherMenuProfil: boolean;
+    userActuel?: UserGoogle | null;
 }
-export default function Header({ afficherMenuProfil }: HeaderProps) {
+export default function Header({ afficherMenuProfil, userActuel }: HeaderProps) {
     return (
         <div className="navbar fixed top-4 z-50 max-w-6xl rounded-2xl border border-[#e5e5e5] bg-base-100 px-4 py-2 shadow-sm backdrop-blur-sm">
             <div className="navbar-start">
@@ -19,24 +22,20 @@ export default function Header({ afficherMenuProfil }: HeaderProps) {
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar" aria-label="Ouvrir le menu du profil">
                         <div className="w-10 rounded-full">
-                            <img
-                                alt="Photo de profil"
-                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                            />
+                            {userActuel?.photoURL && (
+                                <img
+                                    alt="Photo de profil"
+                                    src={userActuel.photoURL}
+                                />
+                            )}
                         </div>
                     </div>
                     <ul
                         tabIndex={-1}
                         className="menu menu-sm dropdown-content z-1 mt-3 w-52 rounded-box bg-base-100 p-2 shadow"
                     >
-                        <li>
-                            <a className="justify-between">
-                                Profile
-                                <span className="badge">New</span>
-                            </a>
-                        </li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
+                        <li><a>Voir ton profil</a></li>
+                        <li><a>Déconnexion</a></li>
                     </ul>
                 </div>)}
             </div>
