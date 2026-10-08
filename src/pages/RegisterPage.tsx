@@ -20,7 +20,7 @@ export default function RegisterPage(){
                     glow
                     className="[mask-image:radial-gradient(1280px_circle_at_center,white,transparent)]"
                 />
-                <Header />
+                <Header afficherMenuProfil={false}  />
                 <SectionAuth titre_formulaire="Commence à apprendre ! " titre_btn="Démarrer" type_form="register"/>
                 <Footer />
             </div>

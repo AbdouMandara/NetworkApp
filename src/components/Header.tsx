@@ -1,6 +1,8 @@
 import { Moon, Sun } from "lucide-react";
-
-export default function Header() {
+interface HeaderProps {
+    afficherMenuProfil: boolean;
+}
+export default function Header({ afficherMenuProfil }: HeaderProps) {
     return (
         <div className="navbar fixed top-4 z-50 max-w-6xl rounded-2xl border border-[#e5e5e5] bg-base-100 px-4 py-2 shadow-sm backdrop-blur-sm">
             <div className="navbar-start">
@@ -13,7 +15,7 @@ export default function Header() {
                     <Sun className="swap-off h-5 w-5" aria-hidden="true" />
                     <Moon className="swap-on h-5 w-5" aria-hidden="true" />
                 </label>
-
+                {afficherMenuProfil && (
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar" aria-label="Ouvrir le menu du profil">
                         <div className="w-10 rounded-full">
@@ -36,7 +38,7 @@ export default function Header() {
                         <li><a>Settings</a></li>
                         <li><a>Logout</a></li>
                     </ul>
-                </div>
+                </div>)}
             </div>
         </div>
     );

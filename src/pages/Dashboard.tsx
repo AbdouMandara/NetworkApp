@@ -34,7 +34,7 @@ export default function Dashboard() {
                 glow
                 className="[mask-image:radial-gradient(1280px_circle_at_center,white,transparent)]"
             />
-            <Header />
+            <Header afficherMenuProfil={true} />
       </div>
   );
 }

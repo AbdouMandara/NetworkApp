@@ -17,7 +17,7 @@ export default function LandingPage() {
                 glow
                 className="[mask-image:radial-gradient(1280px_circle_at_center,white,transparent)]"
             />
-            <Header />
+            <Header afficherMenuProfil={false}  />
             <SectionHero />
         </div>
     )

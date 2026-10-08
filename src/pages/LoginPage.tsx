@@ -20,7 +20,7 @@ export default function LoginPage(){
                     glow
                     className="[mask-image:radial-gradient(1280px_circle_at_center,white,transparent)]"
                 />
-                <Header />
+                <Header afficherMenuProfil={false} />
                 <SectionAuth titre_formulaire="Continue d'apprendre ! " titre_btn="Se connecter" type_form="login"/>
                 <Footer />
             </div>
