@@ -3,6 +3,7 @@ import LandingPage from "../pages/LandingPage"
 import AboutPage from "../pages/AboutPage"
 import LoginPage from "@/pages/LoginPage"
 import RegisterPage from "@/pages/RegisterPage"
+import Dashboard from "@/pages/Dashboard"
 
 export const router = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ export const router = createBrowserRouter([
     {
         path : 'register',
         element : <RegisterPage />,
+    },
+    {
+        path : 'dashboard',
+        element : <Dashboard />,
     },
     {
         path : 'about',

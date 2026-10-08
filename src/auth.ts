@@ -3,20 +3,27 @@ import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { auth, db } from './firebase'; // Assuming you have set up Firestore
 
 
-// Sign up with Email and Password (unchanged)
-export const signUp = async (email:string, password:string) => {
+// Creation du user a travers Email et Password (unchanged)
+export const signUp = async (name:string, email:string, password:string) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
-
     // Save additional user details in Firestore
     await setDoc(doc(db, 'users', user.uid), {
+      name,
       email: user.email,
       createdAt: new Date(),
     });
-
+    
+    const user_en_localstorage = {
+      uid: user.uid,
+      displayName: user.displayName,
+      email: user.email,
+      photoURL: user.photoURL,
+      createdAt: new Date(),
+    }
     // Store user information in localStorage
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user_en_localstorage));
 
     return user;
   } catch (error) {
@@ -25,14 +32,20 @@ export const signUp = async (email:string, password:string) => {
   }
 };
 
-// Login with Email and Password (unchanged)
+// Connexion avec Email et Password (unchanged)
 export const login = async (email:string, password:string) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
-
+    const user_en_localstorage = {
+      uid: user.uid,
+      displayName: user.displayName,
+      email: user.email,
+      photoURL: user.photoURL,
+      createdAt: new Date(),
+    }
     // Store user information in localStorage
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user_en_localstorage));
 
     return user;
   } catch (error) {
@@ -41,10 +54,11 @@ export const login = async (email:string, password:string) => {
   }
 };
 
-// Get user details after login (unchanged)
+// Recuperation des details du user apres la connexion (unchanged)
 export const getUserDetails = async (uid:string) => {
   try {
-    const userDoc = await getDoc(doc(db, 'users', uid));
+    const useRef = doc(db, 'users', uid);
+    const userDoc = await getDoc(useRef);
     if (userDoc.exists()) {
       return userDoc.data();
     } else {
@@ -57,26 +71,34 @@ export const getUserDetails = async (uid:string) => {
   }
 };
 
-// Login with Google
+// Connexion avec Google
 export const loginWithGoogle = async () => {
   try {
     const provider = new GoogleAuthProvider();
     const result = await signInWithPopup(auth, provider);
 
     const user = result.user;
+    const user_en_localstorage = {
+      uid: user.uid,
+      displayName: user.displayName,
+      email: user.email,
+      photoURL: user.photoURL,
+      createdAt: new Date(),
+    }
     const userDoc = await getDoc(doc(db, 'users', user.uid));
 
     if (!userDoc.exists()) {
-      // Save user details if it's their first time logging in
+      // On cree le document(on dit ca car c'est du NoSQL) de l'utilisateur dans Firestore s'il n'existe pas
       await setDoc(doc(db, 'users', user.uid), {
         name: user.displayName,
         email: user.email,
+        photoURL: user.photoURL,
         createdAt: new Date(),
       });
     }
 
     // Store user information in localStorage
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user_en_localstorage));
 
     return user;
   } catch (error) {

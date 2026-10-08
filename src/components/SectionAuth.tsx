@@ -1,5 +1,10 @@
 import { Link } from "react-router";
+import { loginWithGoogle, login, signUp } from '../auth'; 
 import { type TypeForm } from "@/types/TypeForms"
+import { useNavigate } from "react-router";
+import {zodResolver} from "@hookform/resolvers/zod"
+import {useForm} from "react-hook-form"
+import AuthFormSchema, {type AuthFormData} from "@/schemas/AuthForm.schema"
 
 interface TextProps{
     titre_formulaire : string;
@@ -8,18 +13,60 @@ interface TextProps{
 }
 
 export default function SectionAuth({titre_formulaire, titre_btn, type_form}:TextProps){
+        const navigate = useNavigate();
+        const {
+            register,
+            handleSubmit,
+            formState: {errors},
+        } = useForm<AuthFormData>({
+            resolver: zodResolver(AuthFormSchema)
+        });
+        const handleGoogleLogin = async () => {
+            // setLoading(true);
+            try {
+            await loginWithGoogle();
+            navigate('/dashboard')
+            } catch (error) {
+            console.error('Error with Google login:', error);
+            } finally {
+                console.log('terminer');
+            }
+        }
+
+        const soumissionFormulaire = async(data: AuthFormData)=>{
+            try {
+                if(type_form === "login"){
+                    await login(data.email, data.password);
+                    navigate('/dashboard')
+                }else{
+                    await signUp(data.name, data.email, data.password);
+                    navigate('/dashboard')
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error);
+            }
+        }
     return(
         <>
-                        <section className="flex w-full max-w-xs flex-1 flex-col items-center justify-center gap-4 py-4 mt-18">
-                    <p className="font-bold tracking-tight text-balance sm:text-2xl">
-                        {titre_formulaire}
-                    </p>
-                    <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
-                        <label className="label">Pseudo</label>
-                        <input type="text" className="input" placeholder="Entrez votre pseudo" />
+                    <section className="flex w-full max-w-xs flex-1 flex-col items-center justify-center gap-4 py-4 mt-18">
+                        <p className="font-bold tracking-tight text-balance sm:text-2xl">
+                            {titre_formulaire}
+                        </p>
+                    <form method="post" onSubmit={handleSubmit(soumissionFormulaire)} className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+                        <label className="label">Email</label>
+                        <input type="email" className="input" placeholder="Entrez votre email" {...register("email")}/>
+                        {type_form === "register" && (
+                            <>
+                                <label className="label">Pseudo</label>
+                                <input type="text" className="input" placeholder="Entrez votre pseudo" {...register("name")}/>
+                                {errors.name && <p className="text-error text-sm">{errors.name.message}</p>}
+                            </>
+                        )}
+                        {errors.email && <p className="text-error text-sm">{errors.email.message}</p>}
+                        {errors.password && <p className="text-error text-sm">{errors.password.message}</p>}
                         <label className="label">Mot de passe</label>
-                        <input type="password" className="input" placeholder="Entrez votre mot de passe" />
-                        <button className="btn btn-neutral mt-4">{titre_btn}</button>
+                        <input type="password" className="input" placeholder="Entrez votre mot de passe" {...register("password")}/>
+                        <button className="btn btn-neutral mt-4" type="submit">{titre_btn}</button>
                         {type_form === "login" ? (
                             <p className="text-muted-foreground text-center mt-2">
                                 Tu es nouveau ? <Link to="/register" className="link link-primary underline">Inscris-toi</Link>
@@ -30,10 +77,10 @@ export default function SectionAuth({titre_formulaire, titre_btn, type_form}:Tex
                                 Tu as déjà un compte ? <Link to="/login" className="link link-primary underline">Connecte-toi</Link>
                             </p>
                         )}
-                    </fieldset>
+                    </form>
                     <div className="divider">OU</div>
                     {/* Google */}
-                    <button className="btn bg-white w-full text-black border-[#e5e5e5]">
+                    <button className="btn bg-white w-full text-black border-[#e5e5e5]" onClick={handleGoogleLogin}>
                         <svg
                             aria-label="Google logo"
                             width="16"
@@ -69,4 +116,5 @@ export default function SectionAuth({titre_formulaire, titre_btn, type_form}:Tex
                 </section>
         </>
     )
+
 }
