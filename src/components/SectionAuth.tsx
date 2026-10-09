@@ -4,6 +4,8 @@ import { type TypeForm } from "@/types/TypeForms"
 import { useNavigate } from "react-router";
 import {zodResolver} from "@hookform/resolvers/zod"
 import {useForm} from "react-hook-form"
+import { useState } from "react";
+import LoadingOverlay from "@/components/LoadingOverlay";
 import AuthFormSchema, {type AuthFormData} from "@/schemas/AuthForm.schema"
 
 interface TextProps{
@@ -14,6 +16,7 @@ interface TextProps{
 
 export default function SectionAuth({titre_formulaire, titre_btn, type_form}:TextProps){
         const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
         const {
             register,
             handleSubmit,
@@ -22,18 +25,19 @@ export default function SectionAuth({titre_formulaire, titre_btn, type_form}:Tex
             resolver: zodResolver(AuthFormSchema)
         });
         const handleGoogleLogin = async () => {
-            // setLoading(true);
+            setIsLoading(true);
             try {
             await loginWithGoogle();
             navigate('/dashboard')
             } catch (error) {
             console.error('Error with Google login:', error);
             } finally {
-                console.log('terminer');
+                setIsLoading(false);
             }
         }
 
         const soumissionFormulaire = async(data: AuthFormData)=>{
+            setIsLoading(true);
             try {
                 if(type_form === "login"){
                     await login(data.email, data.password);
@@ -44,6 +48,8 @@ export default function SectionAuth({titre_formulaire, titre_btn, type_form}:Tex
                 }
             } catch (error) {
                 console.error('Error submitting form:', error);
+            } finally {
+                setIsLoading(false);
             }
         }
     return(
@@ -114,6 +120,7 @@ export default function SectionAuth({titre_formulaire, titre_btn, type_form}:Tex
                         Retour à l'accueil
                     </Link>
                 </section>
+                {isLoading && <LoadingOverlay />}
         </>
     )
 

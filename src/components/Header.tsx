@@ -1,15 +1,23 @@
 import { Moon, Sun, User } from "lucide-react";
 import { type UserGoogle } from "@/types/userGoogle";
+import { useState } from "react";
 import { useNavigate } from "react-router"; 
+import LoadingOverlay from "@/components/LoadingOverlay";
 interface HeaderProps {
     afficherMenuProfil: boolean;
     userActuel?: UserGoogle | null;
 }
 export default function Header({ afficherMenuProfil, userActuel }: HeaderProps) {
     const navigate = useNavigate();
-    const logout = ()=>{
-        localStorage.removeItem("user")
-        navigate('/login');
+    const [isLoggingOut, setIsLoggingOut] = useState(false);
+    const logout = () => {
+        setIsLoggingOut(true);
+        window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => {
+                localStorage.removeItem("user");
+                navigate('/login');
+            });
+        });
     }
     
     return (
@@ -47,6 +55,7 @@ export default function Header({ afficherMenuProfil, userActuel }: HeaderProps) 
                     </ul>
                 </div>)}
             </div>
+            {isLoggingOut && <LoadingOverlay />}
         </div>
     );
 }
