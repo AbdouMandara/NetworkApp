@@ -51,7 +51,7 @@ export default function Header({ afficherMenuProfil, userActuel }: HeaderProps) 
                                 <img
                                     alt="Photo de profil"
                                     src={userActuel.photoURL}
-                                    className="w-full h-6  object-cover"
+                                    className="w-full h-full  object-cover"
                                     // onError={() => setPhotoProfil(true)}
                                 />
                             ) : (
