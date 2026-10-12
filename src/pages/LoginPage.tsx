@@ -12,7 +12,7 @@ export default function LoginPage(){
         if (redirect) {
             redirect();
         }
-    }, [redirect]);
+    }, []);
     return (
         <>
             <div className="flex min-h-dvh flex-col items-center">
