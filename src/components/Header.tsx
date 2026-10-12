@@ -22,7 +22,6 @@ export default function Header({ afficherMenuProfil, userActuel }: HeaderProps) 
         });
     }
 
-    const [photo_profil, setPhotoProfil] = useState(false)
     
     return (
         <div className="navbar fixed top-4 z-50 max-w-6xl rounded-2xl border border-[#e5e5e5] bg-base-100 px-4 py-2 shadow-sm backdrop-blur-sm">
@@ -31,9 +30,9 @@ export default function Header({ afficherMenuProfil, userActuel }: HeaderProps) 
             </div>
              <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-2">
-                <li><NavLink to='/dashboard'>Accueil</NavLink></li>
-                <li><NavLink to='/quizz'>Quizz</NavLink></li>
-                <li><NavLink to='/cours'>Cours</NavLink></li>
+                    <li><NavLink to='/dashboard'>Accueil</NavLink></li>
+                    <li><NavLink to='/quizz'>Quizz</NavLink></li>
+                    <li><NavLink to='/cours'>Cours</NavLink></li>
                 </ul>
             </div>
 
@@ -47,12 +46,13 @@ export default function Header({ afficherMenuProfil, userActuel }: HeaderProps) 
                 {afficherMenuProfil && (
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar" aria-label="Ouvrir le menu du profil">
-                        <div className="w-10 rounded-full">
-                            {userActuel?.photoURL && !photo_profil ? (
+                        <div className="w-10 rounded-full flex items-center justify-center bg-gray-200 overflow-hidden">
+                            {userActuel?.photoURL  ? (
                                 <img
                                     alt="Photo de profil"
                                     src={userActuel.photoURL}
-                                    onError={() => setPhotoProfil(true)}
+                                    className="w-full h-6  object-cover"
+                                    // onError={() => setPhotoProfil(true)}
                                 />
                             ) : (
                                 <User className="w-full h-6"/>
