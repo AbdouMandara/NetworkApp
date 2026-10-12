@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import LoadingOverlay from "@/components/LoadingOverlay";
 import {useNavigate} from "react-router";
 import ListClassement from "@/components/ListClassement";
-import { Medal } from "lucide-react";
+import { LogOut, Medal, User } from "lucide-react";
 
 export default function Dashboard() {
     const [user, setUser] = useState<UserGoogle>();
@@ -44,18 +44,39 @@ export default function Dashboard() {
                     glow
                     className="[mask-image:radial-gradient(1280px_circle_at_center,white,transparent)]"
                 />
-                <Header afficherMenuProfil={true} userActuel={user} />
+                <Header afficherMenuProfil={false} userActuel={user} />
 
                 <main className="mt-[100px] w-full h-max grid grid-flow-col grid-rows-2 gap-8 lg:px-[103px] py-6 ">
                     <div className='col-span-2'>
-                        <h1 className='text-3xl mb-4'>Coucou, {user?.displayName} !</h1>
+                        <h1 className='text-3xl mb-4'>Coucou cher <strong> lover du réseau </strong>!</h1>
                         <ListClassement />
                     </div>
                     <div className="col-span-2 mt-4">
                         <h1 className='text-3xl mb-2'>Petit Tip du jour</h1>
                         <p className='text-lg'>'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio fugit aliquid eligendi suscipit! Neque, eligendi.'</p>
                     </div>
-                    <div className='row-span-2 bg-base-100 px-4 py-6  shadow-sm'>
+                    <div className='row-span-2 bg-base-100 px-8 py-6  shadow-sm'>
+                        <div className="mb-6 flex flex-col items-center text-center">
+                            <div className="h-20 w-20 overflow-hidden rounded-full bg-gray-200">
+                                {user?.photoURL ? (
+                                    <img src={user.photoURL} alt="Photo de profil" className="h-full w-full object-cover" />
+                                ) : (
+                                    <User className="h-full w-full p-5 text-gray-500" aria-hidden="true" />
+                                )}
+                            </div>
+                            <p className="mt-3 text-lg font-semibold">{user?.displayName}</p>
+                            <button
+                                type="button"
+                                className="btn btn-ghost btn-sm mt-2"
+                                onClick={() => {
+                                    localStorage.removeItem("user");
+                                    navigate("/login");
+                                }}
+                            >
+                                <LogOut className="h-4 w-4" aria-hidden="true" />
+                                Déconnexion
+                            </button>
+                        </div>
                         <h1 className='text-xl mb-2'>Ton best score</h1>
                         <h1 className='text-3xl font-bold text-center'>100</h1>
                         <div>
