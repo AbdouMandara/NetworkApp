@@ -53,7 +53,7 @@ export default function Dashboard() {
                     </div>
                     <div className="mt-4 lg:col-start-1 lg:row-start-2">
                         <h1 className='text-3xl mb-2'>Petit Tip du jour</h1>
-                        <p className='text-lg'>'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio fugit aliquid eligendi suscipit! Neque, eligendi.'</p>
+                        <p className='text-lg bg-base-100 rounded-box shadow-md w-full px-4 py-2'>'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio fugit aliquid eligendi suscipit! Neque, eligendi.'</p>
                     </div>
                     <div className='bg-base-100 px-8 py-6 shadow-sm lg:col-start-2 lg:row-span-2 lg:row-start-1'>
                         <div className="mb-6 flex flex-col items-center text-center">
