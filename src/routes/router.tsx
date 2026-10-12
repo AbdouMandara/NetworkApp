@@ -4,6 +4,8 @@ import AboutPage from "../pages/AboutPage"
 import LoginPage from "@/pages/LoginPage"
 import RegisterPage from "@/pages/RegisterPage"
 import Dashboard from "@/pages/Dashboard"
+import QuizzPage from "@/pages/QuizzPage"
+import CoursPage from "@/pages/CoursPage"
 
 export const router = createBrowserRouter([
     {
@@ -21,6 +23,14 @@ export const router = createBrowserRouter([
     {
         path : 'dashboard',
         element : <Dashboard />,
+    },
+    {
+        path : 'quizz',
+        element : <QuizzPage />,
+    },
+    {
+        path : 'cours',
+        element : <CoursPage />,
     },
     {
         path : 'about',

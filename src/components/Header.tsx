@@ -3,6 +3,8 @@ import { type UserGoogle } from "@/types/userGoogle";
 import { useState } from "react";
 import { useNavigate } from "react-router"; 
 import LoadingOverlay from "@/components/LoadingOverlay";
+import { NavLink } from "react-router";
+
 interface HeaderProps {
     afficherMenuProfil: boolean;
     userActuel?: UserGoogle | null;
@@ -27,6 +29,14 @@ export default function Header({ afficherMenuProfil, userActuel }: HeaderProps) 
             <div className="navbar-start">
                 <a className="btn btn-ghost text-xl">NetworkApp</a>
             </div>
+             <div className="navbar-center hidden lg:flex">
+                <ul className="menu menu-horizontal px-1 gap-2">
+                <li><NavLink to='/dashboard'>Accueil</NavLink></li>
+                <li><NavLink to='/quizz'>Quizz</NavLink></li>
+                <li><NavLink to='/cours'>Cours</NavLink></li>
+                </ul>
+            </div>
+
 
             <div className="navbar-end gap-2">
                 <label className="swap swap-rotate btn btn-ghost btn-circle" aria-label="Changer de thème">
