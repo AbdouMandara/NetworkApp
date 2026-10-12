@@ -46,16 +46,16 @@ export default function Dashboard() {
                 />
                 <Header afficherMenuProfil={false} userActuel={user} />
 
-                <main className="mt-[100px] w-full h-max grid grid-flow-col grid-rows-2 gap-8 lg:px-[103px] py-6 ">
-                    <div className='col-span-2'>
+                <main className="mt-[100px] grid h-max w-full grid-cols-1 gap-8 py-6 lg:grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)] lg:grid-rows-[auto_auto] lg:px-[103px]">
+                    <div className='lg:col-start-1 lg:row-start-1'>
                         <h1 className='text-3xl mb-4'>Coucou cher <strong> lover du réseau </strong>!</h1>
                         <ListClassement />
                     </div>
-                    <div className="col-span-2 mt-4">
+                    <div className="mt-4 lg:col-start-1 lg:row-start-2">
                         <h1 className='text-3xl mb-2'>Petit Tip du jour</h1>
                         <p className='text-lg'>'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio fugit aliquid eligendi suscipit! Neque, eligendi.'</p>
                     </div>
-                    <div className='row-span-2 bg-base-100 px-8 py-6  shadow-sm'>
+                    <div className='bg-base-100 px-8 py-6 shadow-sm lg:col-start-2 lg:row-span-2 lg:row-start-1'>
                         <div className="mb-6 flex flex-col items-center text-center">
                             <div className="h-20 w-20 overflow-hidden rounded-full bg-gray-200">
                                 {user?.photoURL ? (
