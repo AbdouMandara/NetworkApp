@@ -5,9 +5,9 @@ import Header from "@/components/Header";
 import LoadingOverlay from "@/components/LoadingOverlay";
 import {useNavigate} from "react-router";
 export default function Dashboard() {
-        const [user, setUser] = useState<UserGoogle>();
-  const [isLoading, setIsLoading] = useState(true);
-        const navigate = useNavigate();
+    const [user, setUser] = useState<UserGoogle>();
+    const [isLoading, setIsLoading] = useState(true);
+    const navigate = useNavigate();
         useEffect(() => {
             const frame = window.requestAnimationFrame(() => {
                 try {
@@ -34,18 +34,36 @@ export default function Dashboard() {
 
             return () => window.cancelAnimationFrame(frame);
         }, [navigate]);
-  return (
-      <>
-        <div className="flex h-dvh min-h-[36rem] flex-col items-center">
-            <DotPattern
-                glow
-                className="[mask-image:radial-gradient(1280px_circle_at_center,white,transparent)]"
-            />
-            <Header afficherMenuProfil={true} userActuel={user} />
-          </div>
-          {isLoading && (
-            <LoadingOverlay />
-          )}
-          </>
+    return (
+        <>
+            <div className="flex h-dvh min-h-[36rem] flex-col items-center">
+                <DotPattern
+                    glow
+                    className="[mask-image:radial-gradient(1280px_circle_at_center,white,transparent)]"
+                />
+                <Header afficherMenuProfil={true} userActuel={user} />
+
+                <main className="bg-red-500 mt-[100px] w-full grid grid-flow-col grid-rows-2 gap-8 items-center justify-center lg:px-[95px] py-8">
+                    <div>
+                        <h1>Coucou, {user?.displayName} !</h1>
+                        <p>Ton rang dans le classement</p>
+                    </div>
+                    <div className="col-span-2">
+                        <h1>Petit Tip du jour</h1>
+                        <p>'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio fugit aliquid eligendi suscipit! Neque, eligendi.'</p>
+                    </div>
+                    <div className='row-span-2'>
+                        <h1>Ton best score</h1>
+                        <h1>100</h1>
+                        <div>
+                            <p>Tes badges</p>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            {isLoading && (
+                <LoadingOverlay />
+            )}
+        </>
   );
 }
