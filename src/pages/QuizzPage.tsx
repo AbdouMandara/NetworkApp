@@ -31,20 +31,20 @@ export default function QuizzPage() {
 
                 <div className="mt-10 flex w-full max-w-md flex-col gap-2">
                     {difficultes.map((option) => (
-                        <label
+                        <button
                             key={option.id}
-                            className="label cursor-pointer items-center gap-3 rounded-box border border-base-300 bg-base-100 px-4 py-3 transition-colors hover:border-primary/60 has-[:checked]:border-primary has-[:checked]:bg-primary/10"
+                            type="button"
+                            onClick={() => basculerDifficulte(option.id)}
+                            className={`cursor-pointer rounded-box border bg-base-100 p-2 text-center text-black text-xl transition-colors ${
+                                difficulte === option.id
+                                    ? "border-primary bg-primary/10"
+                                    : "border-base-300 hover:border-primary/60"
+                            }`}
                         >
-                            <input
-                                type="checkbox"
-                                className="checkbox checkbox-primary checkbox-lg"
-                                checked={difficulte === option.id}
-                                onChange={() => basculerDifficulte(option.id)}
-                            />
-                            <span className="text-black text-2xl font-bold">{option.label}</span>
-                        </label>
+                            {option.label}
+                        </button>
                     ))}
-                    <button type="button" className="btn btn-primary mt-4 mt-6 w-full">
+                    <button type="button" className="btn btn-primary mt-6 w-full">
                         <Play aria-hidden="true" className="size-4" />
                         Démarrer le jeu
                     </button>
