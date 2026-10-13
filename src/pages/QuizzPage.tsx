@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Play } from "lucide-react";
 import Header from "@/components/Header";
 import { DotPattern } from "@/registry/magicui/dot-pattern";
+import { Link } from "react-router";
 
 const difficultes = [
     { id: "facile", label: "Facile", outline: "btn-outline btn-success", filled: "btn-success" },
@@ -47,14 +48,14 @@ export default function QuizzPage() {
                             >
                                 {option.label}
                             </button>
-                        );
+                        )
                     })}
                 </div>
 
-                <button type="button" disabled={!isLevelSelected} className="mt-12 btn btn-primary btn-lg w-full max-w-lg gap-2 text-lg active:scale-[0.98]">
+                <Link to={`quizz/${difficulte}`} disabled={!isLevelSelected} className="mt-12 btn btn-primary btn-lg w-full max-w-lg gap-2 text-lg active:scale-[0.98]">
                     <Play aria-hidden="true" className="size-5" />
                     Démarrer le jeu
-                </button>
+                </Link>
             </main>
         </div>
     );

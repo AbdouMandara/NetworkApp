@@ -6,6 +6,7 @@ import RegisterPage from "@/pages/RegisterPage"
 import Dashboard from "@/pages/Dashboard"
 import QuizzPage from "@/pages/QuizzPage"
 import CoursPage from "@/pages/CoursPage"
+import PagesLevel from "@/pages/PagesLevel"
 
 export const router = createBrowserRouter([
     {
@@ -36,4 +37,8 @@ export const router = createBrowserRouter([
         path : 'about',
         element : <AboutPage />,
     },
+    {
+        path: 'quizz/:level_id',
+        element: <PagesLevel />,
+    }
 ])
