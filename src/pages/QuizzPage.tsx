@@ -12,10 +12,11 @@ const difficultes = [
 type Difficulte = (typeof difficultes)[number]["id"];
 
 export default function QuizzPage() {
-    const [difficulte, setDifficulte] = useState<Difficulte>("facile");
-
+    const [difficulte, setDifficulte] = useState<Difficulte>();
+    const [isLevelSelected, setIsLevelSelected] = useState(false);
     const basculerDifficulte = (id: Difficulte) => {
         setDifficulte((actuelle) => (actuelle === id ? actuelle : id));
+        setIsLevelSelected(true);
     };
 
     return (
@@ -50,7 +51,7 @@ export default function QuizzPage() {
                     })}
                 </div>
 
-                <button type="button" className="mt-12 btn btn-primary btn-lg w-full max-w-lg gap-2 text-lg active:scale-[0.98]">
+                <button type="button" disabled={!isLevelSelected} className="mt-12 btn btn-primary btn-lg w-full max-w-lg gap-2 text-lg active:scale-[0.98]">
                     <Play aria-hidden="true" className="size-5" />
                     Démarrer le jeu
                 </button>
