@@ -52,7 +52,7 @@ export default function QuizzPage() {
                     })}
                 </div>
 
-                <Link to={`quizz/${difficulte}`} disabled={!isLevelSelected} className="mt-12 btn btn-primary btn-lg w-full max-w-lg gap-2 text-lg active:scale-[0.98]">
+                <Link to={`/${difficulte}`} disabled={!isLevelSelected} className="mt-12 btn btn-primary btn-lg w-full max-w-lg gap-2 text-lg active:scale-[0.98]">
                     <Play aria-hidden="true" className="size-5" />
                     Démarrer le jeu
                 </Link>
